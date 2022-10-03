@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WindowsNET6App": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
