@@ -3,7 +3,7 @@
 FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
 WORKDIR /app
 
-ENV LD_LIBRARY_PATH="/opt/app-root/app/clidriver/lib/"
+ENV LD_LIBRARY_PATH="/app/clidriver/lib/"
 
 RUN apt-get -y update && apt-get install -y libxml2
 
@@ -23,6 +23,6 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 
 ENV PATH=$PATH:"/app/bin/x64/Debug/net6.0/clidriver/lib"
-Env PATH=$PATH:"/opt/app-root/app/bin/x64/Debug/net6.0/clidriver/bin:/opt/app-root/app/clidriver/lib/:/opt/app-root/app/bin/x64/Debug/net6.0/clidriver/lib"
+Env PATH=$PATH:"/app/bin/x64/Debug/net6.0/clidriver/bin:/app/clidriver/lib/:/app/bin/x64/Debug/net6.0/clidriver/lib"
 
 ENTRYPOINT ["dotnet", "WindowsNET6App.dll"]
