@@ -11,7 +11,7 @@ Console.WriteLine("The current directory is {0}", path);
 
 Console.WriteLine("LD Library path is "+   Environment.GetEnvironmentVariable("LD_LIBRARY_PATH"));
 Console.WriteLine("   Switch on the trace \n");
-Console.ReadLine();
+ExecuteCommand(@"/C db2trc on -f /app/db2trc.dmp");
 
 //
 string connString=Environment.GetEnvironmentVariable("connectionstring");
@@ -167,5 +167,25 @@ Console.WriteLine("   Table EMPBOOL1 Deletetion Done\n");
 Console.WriteLine("\n  Disconnect from the database");
 conn.Close();
 Console.WriteLine("   Switch off the trace \n");
-Console.ReadLine();
+ExecuteCommand(@"/C db2trc off");
+ExecuteCommand(@"/C dir");
+
+
+static void ExecuteCommand(string command)
+{
+    Console.WriteLine(" fun starts \n");
+
+    System.Diagnostics.Process process = new System.Diagnostics.Process();
+    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+    startInfo.FileName = "cmd.exe";
+
+    //startInfo.Arguments = "/C db2trc  on  -f   //app//db2trc.dmp";
+    startInfo.Arguments = command;
+
+    process.StartInfo = startInfo;
+    process.Start();
+    Console.WriteLine(" fun ends \n");
+
+}
 
