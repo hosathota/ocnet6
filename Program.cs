@@ -11,9 +11,11 @@ Console.WriteLine("The current directory is {0}", path);
 
 Console.WriteLine("LD Library path is "+   Environment.GetEnvironmentVariable("LD_LIBRARY_PATH"));
 Console.WriteLine("   Switch on the trace \n");
-Console.Readline();
+Console.ReadLine();
 
-string connString = "Database=sample;UserID=newton;Server=Waldevdbclnxtst06.dev.rocketsoftware.com:60000;pwd=A2m8test;";
+//
+string connString=Environment.GetEnvironmentVariable("connectionstring");
+
 DB2Connection conn = new DB2Connection(connString);
 conn.Open();
 Console.WriteLine("Connection Open");
@@ -165,5 +167,5 @@ Console.WriteLine("   Table EMPBOOL1 Deletetion Done\n");
 Console.WriteLine("\n  Disconnect from the database");
 conn.Close();
 Console.WriteLine("   Switch off the trace \n");
-Console.Readline();
+Console.ReadLine();
 
