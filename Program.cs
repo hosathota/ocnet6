@@ -1,7 +1,16 @@
 ﻿using IBM.Data.Db2;
+using System.IO;
+using System.Diagnostics;
+
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 Console.WriteLine("Using DB2 .NET provider");
+
+string path = Directory.GetCurrentDirectory();
+Console.WriteLine("The current directory is {0}", path);        
+
+Console.WriteLine("LD Library path is "+   Environment.GetEnvironmentVariable("LD_LIBRARY_PATH"));
+
 string connString = "Database=sample;UserID=newton;Server=Waldevdbclnxtst06.dev.rocketsoftware.com:60000;pwd=A2m8test;";
 DB2Connection conn = new DB2Connection(connString);
 conn.Open();
