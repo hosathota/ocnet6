@@ -12,6 +12,13 @@ Console.WriteLine("The current directory is {0}", path);
 Console.WriteLine("LD Library path is "+   Environment.GetEnvironmentVariable("LD_LIBRARY_PATH"));
 Console.WriteLine("   Switch on the trace \n");
 
+int counter =0;
+
+while (counter < 100000000)
+{
+    counter++;  
+}
+
 //
 string connString=Environment.GetEnvironmentVariable("connectionstring");
 
